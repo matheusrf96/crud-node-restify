@@ -10,8 +10,8 @@ const knex = require('knex')({
     client: 'mysql',
     connection: {
       host : 'localhost',
-      user : '', //completar
-      password : '', //completar
+      user : 'admin', //completar
+      password : 'admin', //completar
       database : 'jsnode'
     }
 });
@@ -19,11 +19,6 @@ const knex = require('knex')({
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
-
-server.get('/', restify.plugins.serveStatic({
-    directory: './dist',
-    file: 'index.html'
-}));
 
 //Todos os resultados
 server.get('/read', function (req, res, next) {
@@ -88,7 +83,7 @@ server.del('/delete/:id', function (req, res, next) {
 });
 
 server.get(/\/(.*)?.*/, restify.plugins.serveStatic({
-    directory: __dirname + '/dist',
+    directory: __dirname + '/src',
     default: 'index.html'
 }));
 
