@@ -1,0 +1,9 @@
+#texto {
+    display: inline;
+    vertical-align: middle;
+    width: auto;
+}  
+.update{
+    margin-left: -10px;
+    margin-right: 10px;
+}

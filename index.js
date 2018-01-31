@@ -10,8 +10,8 @@ const knex = require('knex')({
     client: 'mysql',
     connection: {
       host : 'localhost',
-      user : 'user',
-      password : 'pass',
+      user : '', //completar
+      password : '', //completar
       database : 'jsnode'
     }
 });
@@ -19,10 +19,6 @@ const knex = require('knex')({
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
-
-server.listen(8080, function () {
-  console.log('%s listening at %s', server.name, server.url);
-});
 
 server.get('/', restify.plugins.serveStatic({
     directory: './dist',
@@ -89,4 +85,13 @@ server.del('/delete/:id', function (req, res, next) {
 
             res.send('Dados excluídos!');
         }, next);
+});
+
+server.get(/\/(.*)?.*/, restify.plugins.serveStatic({
+    directory: __dirname + '/dist',
+    default: 'index.html'
+}));
+
+server.listen(8080, function () {
+    console.log('%s listening at %s', server.name, server.url);
 });
