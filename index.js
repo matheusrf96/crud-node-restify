@@ -10,8 +10,8 @@ const knex = require('knex')({
     client: 'mysql',
     connection: {
       host : 'localhost',
-      user : 'admin', //completar
-      password : 'admin', //completar
+      user : '', //completar
+      password : '', //completar
       database : 'jsnode'
     }
 });
